@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Embedded Portfolio Recruiting Leader | Role Brief</title>
+  <style>
+    :root{
+      --bg:#f6f8fb;
+      --card:#ffffff;
+      --text:#0f172a;
+      --muted:#475569;
+      --muted2:#64748b;
+      --line:#e2e8f0;
+      --soft:#f1f5f9;
+      --accent:#0ea5e9;
+      --accent2:#6366f1;
+      --good:#16a34a;
+      --shadow: 0 12px 30px rgba(2,6,23,.10);
+      --radius: 14px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      line-height: 1.4;
+    }
+
+    .wrap{max-width: 1040px; margin:0 auto; padding: 34px 18px 60px;}
+
+    /* Header */
+    .hdr{display:flex; justify-content:space-between; gap:16px; align-items:flex-start; margin-bottom:18px;}
+    .stamp{display:flex; gap:12px; align-items:flex-start;}
+    .mark{width:40px;height:40px;border-radius:12px; background: linear-gradient(135deg, #0ea5e9, #6366f1); box-shadow: var(--shadow);}
+    .kicker{margin:0; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color: var(--muted2);}
+    .micro{margin:6px 0 0; color: var(--muted); font-size:12px; max-width: 60ch;}
+
+    .chips{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end; margin-top:2px;}
+    .chip{font-size:12px; padding:8px 10px; border-radius:999px;
+      border:1px solid var(--line);
+      background: var(--card);
+      color: var(--muted);
+      display:inline-flex; align-items:center; gap:8px;
+    }
+    .dot{width:8px;height:8px;border-radius:999px; background: var(--accent);}
+
+    /* Hero */
+    .hero{
+      border:1px solid var(--line);
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .heroInner{padding: 22px 22px 18px; display:grid; grid-template-columns: 1.25fr .75fr; gap:16px;}
+    h1{margin:0 0 10px; font-size:30px; letter-spacing:-.02em;}
+    .lede{margin:0; color: var(--muted); font-size:15px; max-width: 78ch;}
+    .lede strong{color: var(--text);}
+
+    .roleMeta{
+      border:1px solid var(--line);
+      background: var(--soft);
+      border-radius: 12px;
+      padding: 14px 14px 12px;
+    }
+    .roleMeta .row{display:flex; justify-content:space-between; gap:10px; align-items:baseline;}
+    .roleMeta .lbl{font-size:11px; letter-spacing:.12em; text-transform:uppercase; color: var(--muted2);}
+    .roleMeta .val{font-size:13px; color: var(--text); font-weight:600;}
+    .roleMeta .sep{height:1px; background: var(--line); margin:10px 0;}
+    .roleMeta .hint{font-family: var(--mono); font-size: 11px; color: var(--muted2);}
+
+    /* Grid */
+    .grid{margin-top:16px; display:grid; grid-template-columns: repeat(12, 1fr); gap:14px;}
+    .card{border:1px solid var(--line); background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); overflow:hidden;}
+    .hd{padding: 14px 16px 10px; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; align-items:flex-end; gap:12px;}
+    .hd h2{margin:0; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color: var(--muted2);}
+    .tag{font-size:11px; color: var(--muted2); padding:6px 10px; border-radius:999px; border:1px solid var(--line); background: #fff; white-space:nowrap;}
+    .bd{padding: 14px 16px 16px;}
+
+    .span-12{grid-column: span 12;}
+    .span-7{grid-column: span 7;}
+    .span-5{grid-column: span 5;}
+    .span-6{grid-column: span 6;}
+
+    /* Content */
+    .bullets{margin:0; padding-left: 18px; color: var(--muted); font-size:14px;}
+    .bullets li{margin: 9px 0;}
+    .bullets strong{color: var(--text);}
+
+    .call{
+      padding: 12px 12px 10px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--soft);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .kpis{display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:10px;}
+    .kpi{border:1px solid var(--line); border-radius:12px; padding:12px 12px 10px; background: #fff;}
+    .kpi .t{display:flex; align-items:center; gap:10px; margin-bottom:6px;}
+    .kpi .b{width:10px;height:10px;border-radius:999px; background: var(--good);}
+    .kpi .b.a2{background: var(--accent2);} 
+    .kpi .b.a1{background: var(--accent);} 
+    .kpi strong{font-size:14px; color: var(--text);} 
+    .kpi span{display:block; font-size:13px; color: var(--muted);} 
+
+    .twoCol{display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px;}
+    .panel{border:1px solid var(--line); background: var(--soft); border-radius:12px; padding: 12px;}
+    .panelTitle{font-weight:700; color: var(--text); margin:0 0 8px;}
+
+    .steps{display:grid; gap:10px;}
+    .step{border:1px solid var(--line); border-radius:12px; padding: 12px; background: #fff;}
+    .stepTop{display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; align-items:baseline;}
+    .badge{font-family: var(--mono); font-size: 11px; color: var(--muted2); padding: 6px 9px; border-radius: 999px; border:1px solid var(--line); background: #fff;}
+    .step p{margin: 8px 0 0; font-size: 14px; color: var(--muted);} 
+
+    .proof{display:grid; gap:10px;}
+    .proof .item{border:1px solid var(--line); border-radius:12px; padding: 12px; background: #fff;}
+    .proof .item strong{display:block; margin-bottom:6px; color: var(--text);} 
+    .proof .item span{display:block; color: var(--muted); font-size: 13px;} 
+
+    .footer{margin-top: 16px; display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; color: var(--muted2); font-size: 12px;}
+    .footer .small{font-family: var(--mono);}
+
+    @media (max-width: 900px){
+      .heroInner{grid-template-columns: 1fr;}
+      .span-7,.span-5,.span-6{grid-column: span 12;}
+      .kpis{grid-template-columns: 1fr;}
+      .twoCol{grid-template-columns: 1fr;}
+      .chips{justify-content:flex-start;}
+    }
+
+    @media print{
+      body{background:#fff;}
+      .wrap{max-width:100%; padding:0;}
+      .card,.hero{box-shadow:none;}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <div class="hdr">
+      <div class="stamp">
+        <div class="mark" aria-hidden="true"></div>
+        <div>
+          <p class="kicker">Role Brief</p>
+          <p class="micro">Internal shared services role for Northrim Horizon</p>
+        </div>
+      </div>
+      <div class="chips" aria-label="role signals">
+        <span class="chip"><span class="dot"></span> CEO first</span>
+        <span class="chip"><span class="dot" style="background:var(--accent2)"></span> Unified voice</span>
+        <span class="chip"><span class="dot" style="background:var(--good)"></span> Retention accountability</span>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="heroInner">
+        <div>
+          <h1>Portfolio Recruiting Capability</h1>
+          <p class="lede">
+            Today, each operating company rebuilds the recruiting process from scratch or relies on outside recruiters who lack context.
+            The result is predictable. CEO time gets consumed, the story gets told inconsistently, pipelines stall, and hiring outcomes are harder to predict.
+            This role creates one accountable owner who can run recruiting end to end for leadership and critical roles across the portfolio.
+          </p>
+        </div>
+
+        <aside class="roleMeta">
+          <div class="row"><span class="lbl">Title</span><span class="val">Embedded Portfolio Recruiting Leader</span></div>
+          <div class="sep"></div>
+          <div class="row"><span class="lbl">Mission</span><span class="val">Own recruiting across the portfolio</span></div>
+          <div class="row" style="margin-top:6px;"><span class="lbl">Primary focus</span><span class="val">Leadership and critical roles</span></div>
+          <div class="sep"></div>
+          <div class="hint">Written to be shareable as an internal role description and operating plan.</div>
+        </aside>
+      </div>
+    </section>
+
+    <div class="grid">
+
+      <section class="card span-12">
+        <div class="hd">
+          <h2>Why this matters</h2>
+          <div class="tag">business impact</div>
+        </div>
+        <div class="bd">
+          <ul class="bullets">
+            <li><strong>Leadership mistakes are expensive.</strong> A misaligned general manager can stall growth, disrupt culture, and require a second search.</li>
+            <li><strong>Delayed leadership hires slow expansion.</strong> Open critical roles delay projects, hiring, and revenue.</li>
+            <li><strong>Candidate market reputation compounds.</strong> Repeated restarts and inconsistent communication reduce response rates over time.</li>
+            <li><strong>Retention directly affects cost.</strong> Clear role definition, structured interviews, and onboarding plans improve first year retention and reduce replacement hiring.</li>
+          </ul>
+        </div>
+      </section>
+
+      
+
+      <section class="card span-12">
+        <div class="hd">
+          <h2>The problem</h2>
+          <div class="tag">what is breaking today</div>
+        </div>
+        <div class="bd">
+          <ul class="bullets">
+            <li><strong>CEO burden.</strong> Leaders are pulled into coordination and admin rather than decision points.</li>
+            <li><strong>Inconsistent representation.</strong> Outside recruiters lack context and the story changes by search.</li>
+            <li><strong>Misaligned incentives.</strong> Placement is optimized instead of quality and retention.</li>
+            <li><strong>Pipeline stall.</strong> Outreach slows once a decent candidate appears and searches restart.</li>
+            <li><strong>Repeat work.</strong> Role definitions and interview plans are recreated at every company.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="card span-12">
+        <div class="hd">
+          <h2>The solution</h2>
+          <div class="tag">portfolio capability</div>
+        </div>
+        <div class="bd">
+          <div class="kpis">
+            <div class="kpi"><div class="t"><span class="b a1"></span><strong>One accountable owner</strong></div><span>Trusted partner for CEOs across companies.</span></div>
+            <div class="kpi"><div class="t"><span class="b a2"></span><strong>Unified narrative</strong></div><span>Consistent and credible candidate experience.</span></div>
+            <div class="kpi"><div class="t"><span class="b"></span><strong>Continuous bench</strong></div><span>Warm pipelines by role and region.</span></div>
+            <div class="kpi"><div class="t"><span class="b a1"></span><strong>Retention feedback</strong></div><span>Post hire signals improve future hiring.</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card span-12">
+        <div class="hd">
+          <h2>Role description</h2>
+          <div class="tag">responsibilities and scope</div>
+        </div>
+        <div class="bd">
+          <div class="twoCol">
+            <div class="panel">
+              <p class="panelTitle">Primary responsibilities</p>
+              <ul class="bullets">
+                <li><strong>Define roles before launch.</strong> Outcomes, must haves, compensation band, interview plan.</li>
+                <li><strong>Run priority searches.</strong> Sourcing, screening, orchestration, offer strategy and close.</li>
+                <li><strong>Align interviewers.</strong> Scorecards and calibration.</li>
+                <li><strong>Represent Northrim and each company.</strong> Accurate and consistent messaging.</li>
+                <li><strong>Maintain a leadership bench.</strong> Ongoing outreach and relationship building.</li>
+              </ul>
+            </div>
+            <div class="panel">
+              <p class="panelTitle">Ongoing operating work</p>
+              <ul class="bullets">
+                <li><strong>Interviewer training.</strong> Structured interviewing and evaluation.</li>
+                <li><strong>Onboarding plans.</strong> 30, 60 and 90 day expectations.</li>
+                <li><strong>Recruiter enablement.</strong> Coach local recruiters where present.</li>
+                <li><strong>Retention reviews.</strong> Post hire feedback loops.</li>
+                <li><strong>Portfolio playbooks.</strong> Reusable templates and processes.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card span-12">
+        <div class="hd">
+          <h2>First 90 days outcomes</h2>
+          <div class="tag">immediate impact</div>
+        </div>
+        <div class="bd">
+          <div class="steps">
+            <div class="step"><div class="stepTop"><strong>First 30 days</strong><span class="badge">priority engagement</span></div><p>Meet priority CEOs, begin priority searches, and map each company’s hiring workflow.</p></div>
+            <div class="step"><div class="stepTop"><strong>By 60 days</strong><span class="badge">system in use</span></div><p>Role templates, scorecards and candidate communication in active use.</p></div>
+            <div class="step"><div class="stepTop"><strong>By 90 days</strong><span class="badge">portfolio value</span></div><p>Qualified slates delivered and an initial cross company leadership bench established.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card span-12">
+        <div class="hd">
+          <h2>What this reduces</h2>
+          <div class="tag">business impact</div>
+        </div>
+        <div class="bd">
+          <ul class="bullets">
+            <li><strong>Agency fees.</strong> Typical retained searches cost 20 to 30 percent of first year salary. A $150,000 hire often carries $30,000 to $45,000 in fees.</li>
+            <li><strong>CEO coordination time.</strong> Coordinating candidates, emails, scheduling, and follow up can consume 5 to 10 hours per week during a search. At an estimated executive value of $200 to $300 per hour, that is $1,000 to $3,000 per week per search.</li>
+            <li><strong>Failed searches.</strong> Restarting a search doubles outreach time and candidate fatigue and can add 6 to 12 weeks of vacancy.</li>
+            <li><strong>Vacancy delay.</strong> Open leadership roles slow hiring, projects, and revenue. Even a conservative $10,000 per week impact over 8 weeks equals $80,000 in delayed output.</li>
+            <li><strong>Retention and replacement cost.</strong> Each replacement typically repeats recruiting expense ($20,000 to $30,000), onboarding and training time, productivity ramp loss, and management rework. Improving retention reduces repeated recruiting and disruption rather than relying on salary multiples.</li>
+            <li><strong>Key person dependency.</strong> Shared playbooks and benches reduce repeated setup across companies.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="card span-12">
+        <div class="hd">
+          <h2>Illustrative savings per leadership hire</h2>
+          <div class="tag">example math</div>
+        </div>
+        <div class="bd">
+          <div class="twoCol">
+            <div class="panel">
+              <p class="panelTitle">Without a portfolio owner</p>
+              <ul class="bullets">
+                <li>Agency fee on $150,000 salary: $30,000 to $45,000</li>
+                <li>CEO time during 8 week search: $8,000 to $24,000</li>
+                <li>Vacancy impact for 8 weeks: about $80,000</li>
+                <li>Higher restart risk and offer declines</li>
+              </ul>
+            </div>
+            <div class="panel">
+              <p class="panelTitle">With a portfolio owner</p>
+              <ul class="bullets">
+                <li>Direct sourcing and warm bench reduces agency reliance</li>
+                <li>CEO engages mainly at decision points</li>
+                <li>Faster slate delivery and fewer restarts</li>
+                <li>Structured onboarding improves retention</li>
+              </ul>
+            </div>
+          </div>
+          <div class="call" style="margin-top:12px;">Across multiple companies and multiple hires per year, small improvements in speed, retention, and agency usage compound into meaningful portfolio level value.</div>
+        </div>
+      </section>
+
+      <section class="card span-12">
+        <div class="hd">
+          <h2>Compounding portfolio capability</h2>
+          <div class="tag">why internal ownership matters</div>
+        </div>
+        <div class="bd">
+          <ul class="bullets">
+            <li><strong>CEO time protection compounds.</strong> If each leadership search absorbs about 64 CEO hours, across 13 hires that is roughly 832 hours annually redirected to operations and growth.</li>
+            <li><strong>Shared learning.</strong> What is learned from one hire improves the next role definition, interview plan, and close across all companies.</li>
+            <li><strong>Faster future searches.</strong> A maintained leadership bench reduces time to slate and lowers restart risk.</li>
+            <li><strong>Acquisition readiness.</strong> A repeatable hiring playbook accelerates leadership placement in newly acquired companies.</li>
+          </ul>
+          <div class="call" style="margin-top:12px;">An internal owner turns hiring from a recurring project into an operating capability that improves every year.</div>
+        </div>
+      </section>
+
+      <section class="card span-12">
+        <div class="hd">
+          <h2>Portfolio level annual impact</h2>
+          <div class="tag">comparison</div>
+        </div>
+        <div class="bd">
+          <div class="twoCol">
+            <div class="panel">
+              <p class="panelTitle">Status quo across 13 companies</p>
+              <ul class="bullets">
+                <li>Agency use for leadership roles: about $30,000 to $45,000 per hire</li>
+                <li>Executive coordination time during searches</li>
+                <li>Vacancy delay while roles remain open</li>
+                <li>Repeat recruiting from avoidable turnover ($20,000 to $30,000 per replacement)</li>
+              </ul>
+              <div class="call" style="margin-top:10px;">Across multiple leadership hires each year, these recurring costs commonly exceed several hundred thousand dollars annually.</div>
+            </div>
+            <div class="panel">
+              <p class="panelTitle">With a dedicated portfolio owner</p>
+              <ul class="bullets">
+                <li>Reduced agency reliance through direct sourcing and warm benches</li>
+                <li>CEO engagement focused on decision points</li>
+                <li>Faster slates and fewer search restarts</li>
+                <li>Higher retention lowers repeated recruiting expense</li>
+              </ul>
+              <div class="call" style="margin-top:10px;">Even modest improvements that avoid a few agency searches and a small number of replacement hires can offset a $350,000 annual role.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card span-5">
+        <div class="hd">
+          <h2>Why Keith</h2>
+          <div class="tag">fit for the role</div>
+        </div>
+        <div class="bd">
+          <div class="proof">
+            <div class="item">
+              <strong>Demonstrated retention improvement</strong>
+              <span>Improved long term retention by implementing structured interviews, interviewer training, and clear onboarding expectations.</span>
+            </div>
+            <div class="item">
+              <strong>Faster hiring outcomes</strong>
+              <span>Reduced time to fill by clarifying role expectations and aligning interviewers before searches began.</span>
+            </div>
+            <div class="item">
+              <strong>Operator mindset</strong>
+              <span>Focus on efficiency, role clarity, and measurable outcomes, not activity volume.</span>
+            </div>
+            <div class="item">
+              <strong>End to end ownership</strong>
+              <span>Can run intake, sourcing, screening, and offer close while protecting CEO time.</span>
+            </div>
+            <div class="item">
+              <strong>Process and training capability</strong>
+              <span>Builds interview structure and trains interviewers so hiring becomes repeatable.</span>
+            </div>
+            <div class="item">
+              <strong>Retention and quality focus</strong>
+              <span>Uses post hire feedback and retention signals to improve future hiring decisions.</span>
+            </div>
+            <div class="item">
+              <strong>Portfolio perspective</strong>
+              <span>Applies lessons learned across companies rather than solving the same problem repeatedly.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card span-12">
+        <div class="hd">
+          <h2>What leadership can review</h2>
+          <div class="tag">concrete artifacts</div>
+        </div>
+        <div class="bd">
+          <ul class="bullets">
+            <li><strong>Portfolio recruiting playbook.</strong> Intake, scorecards, interview steps, candidate communication templates, and close plan.</li>
+            <li><strong>Northrim narrative.</strong> Clear explanation of the permanent capital model candidates can understand.</li>
+            <li><strong>Company narrative sheets.</strong> Market and culture pitch by operating company, including local versus national angle.</li>
+            <li><strong>Weekly dashboard.</strong> Pipeline health, risks, next actions, and accountability.</li>
+            <li><strong>Quarterly bench report.</strong> Warm candidates by function and region to reduce time to slate over time.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    </div>
+
+  </div>
+</body>
+</html>
